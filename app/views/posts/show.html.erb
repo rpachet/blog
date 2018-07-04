@@ -1,0 +1,14 @@
+
+<div class="card border-light mb-3" style="width: 80vw;">
+  <div class="card-header"> <a href="/posts">All Post</a> / <%=@post.title%></div>
+  <div class="card-body">
+    <h5 class="card-title"><%=@post.title%></h5>
+    <p class="card-text">
+    <%=@post.publication_date%>
+    </br>
+    <%=@post.header%>
+    </br>
+    <%= image_tag @post.file%>
+    </p>
+  </div>
+</div>

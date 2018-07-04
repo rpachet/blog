@@ -1,0 +1,24 @@
+<div class="row">
+  <%= form_for @user do |f| %>
+    <%- {
+      first_name: :text,
+      last_name: :text,
+      email: :email
+    }.each do |attr, type| %>
+      <div class="row">
+        <div class="col-sm">
+          <%= f.label attr %>
+        </div>
+        <div class="col-sm">
+          <%= f.send "#{type}_field", attr, class:"form-control"%>
+        </div>
+      </div>
+      <% if @user.errors[attr].present? %>
+        <div class="row alert alert-danger">
+            <%= @user.errors[attr].to_sentence%>
+        </div>
+      <% end %>
+    <%end%>
+    <%= f.submit  class: "btn btn-primary" %>
+  <% end %>
+</div>
