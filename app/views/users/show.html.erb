@@ -5,6 +5,46 @@
     <h5 class="card-title"><%=@user.first_name%> <%=@user.last_name%></h5>
     <p class="card-text"><%=@user.email%></p>
     <p>All Post : <%= link_to "post", [@user, :posts]%></p>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Publication Date</th>
+          <th scope="col">header</th>
+          <th scope="col">file</th>
+          <th scope="col">Author</th>
 
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @user.posts.all.each do |post|%>
+      <tr>
+        <td>
+          <%= link_to(post) do %>
+            <%= post.title %>
+          <% end %>
+          </td>
+        <td><%= post.publication_date%></td>
+        <td><%= post.header%></td>
+        <td><%= image_tag post.file.thumb%></td>
+        <td>
+          <%= link_to(post.user) do %>
+            <%= post.user.first_name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to [:edit, post], class: "btn btn-primary" do %>
+            Update
+          <% end %>
+          <%= link_to post, method: :delete, data: {confirm: "T'est sur ?"}, class: "btn btn-danger" do %>
+            Delete
+          <% end %>
+        </td>
+      </tr>
+      <%end%>
+    </tbody>
+
+    </table>
   </div>
 </div>

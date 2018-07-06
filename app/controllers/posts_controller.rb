@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action  :authenticate_user!, :except => [:show, :index]
-  before_action :load_post, only: [:show, :edit, :update]
+  before_action :load_post, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -15,6 +15,19 @@ class PostsController < ApplicationController
   def load_post
     @post = Post.find(params[:id])
 
+  end
+
+  def update
+    if @post.user == current_user
+      if @post.update_attributes(authorized_attributes)
+          @post.user = @user
+        redirect_to  [@user,@post]
+      else
+        render 'edit'
+      end
+    else
+      redirect_to posts_url
+    end
   end
 
 
@@ -39,8 +52,11 @@ class PostsController < ApplicationController
 
 
   def destroy
-    @user= Post.find(params["id"])
-    @user.destroy
+
+    if @post.user == current_user
+
+      @post.destroy
+    end
     redirect_to posts_url
   end
 

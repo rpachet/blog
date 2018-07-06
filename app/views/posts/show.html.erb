@@ -4,7 +4,11 @@
   <div class="card-body">
     <h5 class="card-title"><%=@post.title%></h5>
     <p class="card-text">
-    <%=@post.publication_date%>
+      <%= link_to @post.user do %>
+        <%= @post.user.first_name  %> <%=@post.user.last_name%>
+      <% end %>
+    </br>
+      <%=@post.publication_date%>
     </br>
     <%=@post.header%>
     </br>
