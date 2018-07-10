@@ -5,19 +5,59 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 
 </head>
 <body>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login', new_user_session_path)  %>
-    </li>
-  <% end %>
+
+<div id="header-wrapper" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+<div class="container menu-wrap">
+<div class="top-bar-social blue section" id="header social widget" name="Top Social Widget"><div class="widget LinkList" data-version="1" id="LinkList230">
+</div></div>
+</div>
+<div style="clear: both;"></div>
+<div class="container" id="header-wrappers">
+<div class="headerleft">
+<div class="headerleft section" id="headerleft"><div class="widget Header" data-version="1" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+  Mon jolie Blog
+</h1>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div style="clear: both;"></div>
+<div class="tm-menu" id="stickymenu">
+  <div class="container menu-wrap">
+  <div class="menu section" id="menu" name="Main Menu"><div class="widget LinkList" data-version="1" id="LinkList210" style="display:block!important;">
+    <ul id="nav">
+      <li class="hub-home">
+        <a href="/posts">Posts</a>
+        <ul>
+          <li class="hub-home">
+            <%= link_to [:new, :post], class: "btn btn-primary" do %>
+              Add post
+            <% end %>
+          </li>
+
+        </ul>
+      </li>
+      <% if user_signed_in? %>
+        <li class="hub-home">
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+        </li>
+      <% else %>
+        <li class="hub-home">
+        <%= link_to('Login', new_user_session_path)  %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
+
 <%= yield %>
 
 </body>

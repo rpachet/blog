@@ -2,6 +2,49 @@
 <%= link_to [:new, :post], class: "btn btn-primary" do %>
   Add post
 <% end %>
+<div style="display:flex; flex-wrap:wrap-content;">
+  <% @posts.all.each do |post|%>
+  <div class="four columns post_col masonry-brick hentry" style="width:300px; margin:10px;">
+    <p itemprop="description" style="display: none">Lorem Ipsum is simply dummy text of the printing and typesetting  industry. Lorem Ipsum has been the industry's standard dummy text ever...</p>
+    <div class="post_item">
+      <h3 itemprop="headline" style="display:none">
+        <%= link_to(post) do %>
+          <%= post.title %>
+        <% end %>
+      </h3>
+      <div class="post-body">
+        <span id="p7147158233436755193">
+          <a href="https://april-templatesyard.blogspot.com/2016/03/business-man-analyzing-graphs-on-tablet.html">
+            <div class="large_thumb thumb_hover">
+              <div class="img_wrapper">
+                <%= image_tag post.file%>
+              </div>
+            </div>
+          </a>
+          <h3 class="post_item_title">
+            <%= link_to(post) do %>
+              <%= post.title %>
+            <% end %>
+          </h3>
+          <div class="post_meta">
+            <span class="user">By <span style="color: #aaa;">Templates Yard</span></span>
+            <span class="time">, March 17, 2016</span>
+          </div>
+          <div class="post_item_inner">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard...</p>
+            <div class="clear"></div>
+          </div>
+        </span>
+      <script type="text/javascript">var x="Business man analyzing graphs on a tablet",y="https://april-templatesyard.blogspot.com/2016/03/business-man-analyzing-graphs-on-tablet.html",z="Templates Yard",t="March 17, 2016";readmore("p7147158233436755193")</script>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <%end%>
+</div>
+
+
+<!--
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -44,4 +87,4 @@
   <%end%>
 </tbody>
 
-</table>
+</table> -->
