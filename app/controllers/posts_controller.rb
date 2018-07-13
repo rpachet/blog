@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   end
 
   def authorized_attributes
-    params.require(:post).permit(:title, :publication_date, :header, :file)
+    params.require(:post).permit(:title, :publication_date, :header, :file, :body)
   end
 
 

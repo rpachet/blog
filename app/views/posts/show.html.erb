@@ -3,7 +3,6 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
 <!-- Description and Keywords (start) -->
-
 <div class="four columns post_col masonry-brick hentry">
 
   <div itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
@@ -19,13 +18,16 @@
 
       <div class="post-body" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
         <%= image_tag @post.file%>
-        <p style="font-size:14px">By <%= link_to @post.user do %>
-          <%= @post.user.first_name  %> <%=@post.user.last_name%>
-        <% end %>,
-        <%=@post.publication_date%>
-      </p>
-      <%=@post.header%>
-
+          <p style="font-size:14px">By
+            <%= link_to @post.user do %>
+              <%= @post.user.first_name  %> <%=@post.user.last_name%>
+            <% end %>,
+            <%=@post.publication_date%>
+          </p>
+          <h3><%=@post.header%></h3>
+          <p>
+            <%=@post.body%>
+          </p>
      </div>
      <div class="clear"></div>
 
