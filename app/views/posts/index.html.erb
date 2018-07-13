@@ -1,4 +1,3 @@
-<h2>Listes des posts</h2>
 <%= link_to [:new, :post], class: "btn btn-primary" do %>
   Add post
 <% end %>
@@ -14,26 +13,40 @@
       </h3>
       <div class="post-body">
         <span id="p7147158233436755193">
-          <a href="https://april-templatesyard.blogspot.com/2016/03/business-man-analyzing-graphs-on-tablet.html">
-            <div class="large_thumb thumb_hover">
+          <%= link_to(post) do %>
+          <div class="large_thumb thumb_hover">
               <div class="img_wrapper">
                 <%= image_tag post.file%>
               </div>
             </div>
-          </a>
+          <% end %>
           <h3 class="post_item_title">
             <%= link_to(post) do %>
               <%= post.title %>
             <% end %>
           </h3>
           <div class="post_meta">
-            <span class="user">By <span style="color: #aaa;">Templates Yard</span></span>
-            <span class="time">, March 17, 2016</span>
+            <span class="user">By <span style="color: #aaa;">
+              <%= link_to(post.user) do %>
+                <%= post.user.first_name %>
+              <% end %>
+            </span></span>
+            <span class="time">,<%= post.publication_date%></span>
           </div>
-          <div class="post_item_inner">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard...</p>
+          <div class="post_item_inner" >
+            <p><%= post.header%></p>
+            <p>  <% if user_signed_in? && current_user == post.user %>
+                <%= link_to [:edit, post] do %>
+                  Update
+                <% end %>
+                <%= link_to post, method: :delete, data: {confirm: "T'est sur ?"}  do %>
+                  Delete
+                <% end %>
+              <% end %></p>
             <div class="clear"></div>
+
           </div>
+
         </span>
       <script type="text/javascript">var x="Business man analyzing graphs on a tablet",y="https://april-templatesyard.blogspot.com/2016/03/business-man-analyzing-graphs-on-tablet.html",z="Templates Yard",t="March 17, 2016";readmore("p7147158233436755193")</script>
       </div>
@@ -42,49 +55,3 @@
   </div>
   <%end%>
 </div>
-
-
-<!--
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Publication Date</th>
-      <th scope="col">header</th>
-      <th scope="col">file</th>
-      <th scope="col">Author</th>
-
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @posts.all.each do |post|%>
-  <tr>
-    <td>
-      <%= link_to(post) do %>
-        <%= post.title %>
-      <% end %>
-      </td>
-    <td><%= post.publication_date%></td>
-    <td><%= post.header%></td>
-    <td><%= image_tag post.file.thumb%></td>
-    <td>
-      <%= link_to(post.user) do %>
-        <%= post.user.first_name %>
-      <% end %>
-    </td>
-    <td>
-      <% if user_signed_in? && current_user == post.user %>
-        <%= link_to [:edit, post], class: "btn btn-primary" do %>
-          Update
-        <% end %>
-        <%= link_to post, method: :delete, data: {confirm: "T'est sur ?"}, class: "btn btn-danger" do %>
-          Delete
-        <% end %>
-      <% end %>
-    </td>
-  </tr>
-  <%end%>
-</tbody>
-
-</table> -->

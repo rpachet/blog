@@ -1,18 +1,35 @@
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr" class=" js"><head><script type="text/javascript" src="//api-public.addthis.com/url/shares.json?url=https%3A%2F%2Fapril-templatesyard.blogspot.com%2F2016%2F03%2Fbusiness-man-analyzing-graphs-on-tablet.html&amp;callback=_ate.cbs.rcb_ivul0"></script><script type="text/javascript" src="//graph.facebook.com/?id=https%3A%2F%2Fapril-templatesyard.blogspot.com%2F2016%2F03%2Fbusiness-man-analyzing-graphs-on-tablet.html&amp;callback=_ate.cbs.rcb_8qby0"></script><script type="text/javascript" src="//m.addthisedge.com/live/boost/ra-54a3a64d1b0fbe97/_ate.track.config_resp"></script>
+<link href="https://www.blogger.com/static/v1/widgets/3957297643-widget_css_bundle.css" rel="stylesheet" type="text/css">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-<div class="card border-light mb-3" style="width: 80vw;">
-  <div class="card-header"> <a href="/posts">All Post</a> / <%=@post.title%></div>
-  <div class="card-body">
-    <h5 class="card-title"><%=@post.title%></h5>
-    <p class="card-text">
-      <%= link_to @post.user do %>
-        <%= @post.user.first_name  %> <%=@post.user.last_name%>
-      <% end %>
-    </br>
-      <%=@post.publication_date%>
-    </br>
-    <%=@post.header%>
-    </br>
-    <%= image_tag @post.file%>
-    </p>
+<!-- Description and Keywords (start) -->
+
+<div class="four columns post_col masonry-brick hentry">
+
+  <div itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+      <div itemprop="image" itemscope="itemscope" itemtype="https://schema.org/ImageObject" style="display:none;">
+        <meta content="https://4.bp.blogspot.com/-BlBi18JGkEA/Vupbk40a0UI/AAAAAAAADXk/rydm_x2vsJURxIq763HgLebaYXvmhrnQA/s1600/person-731479_960_720.jpg" itemprop="url">
+        <meta content="700" itemprop="width height">
+      </div>
+
+    <div class="post_item" style="display:flex; flex-direction:column; justify-content:center;">
+      <h1 itemprop="headline">
+        <%=@post.title%>
+      </h1>
+
+      <div class="post-body" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+        <%= image_tag @post.file%>
+        <p style="font-size:14px">By <%= link_to @post.user do %>
+          <%= @post.user.first_name  %> <%=@post.user.last_name%>
+        <% end %>,
+        <%=@post.publication_date%>
+      </p>
+      <%=@post.header%>
+
+     </div>
+     <div class="clear"></div>
+
+    </div>
   </div>
+
 </div>
